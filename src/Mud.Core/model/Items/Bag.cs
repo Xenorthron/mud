@@ -19,6 +19,18 @@ public class Bag : Item
         }
         return totalValue;
     }
+    public int[] GetUsedSlotsRatio()
+    {
+        int usedSlots = 0;
+        for (int i = 0; i < Capacity; i++)
+        {
+            if (Contents[i] != null)
+            {
+                usedSlots++;
+            }
+        }
+        return new int[] { usedSlots, Capacity };
+    }
     public override void Use(PlayerCharacter player)
     {
         var Bags = player.Inventory.Contents;
@@ -46,4 +58,5 @@ public class Bag : Item
             }
         }
     }
+    public override Item Clone() => new Bag(Name, Description, Capacity);
 }

@@ -14,4 +14,5 @@ public class Armor : Item
             player.Inventory.AddItem(currentArmor);
         }
     }
+    public override Item Clone() => new Armor(Name, Description, Value, DefenseBonus);
 }

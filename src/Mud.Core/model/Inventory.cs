@@ -23,6 +23,26 @@ public class Inventory
         }
         return totalValue;
     }
+    public int[] GetUsedSlotsRatio()
+    {
+        int usedSlots = 0;
+        int totalSlots = 0;
+        foreach (var bag in Contents)
+        {
+            if (bag != null)
+            {
+                foreach (var item in bag.Contents)
+                {
+                    totalSlots++;
+                    if (item != null)
+                    {
+                        usedSlots++;
+                    }
+                }
+            }
+        }
+        return new int[] { usedSlots, totalSlots };
+    }
     public void UseItem(int bagIndex, int itemIndex, PlayerCharacter player)
     {
         Bag bag = Contents[bagIndex];

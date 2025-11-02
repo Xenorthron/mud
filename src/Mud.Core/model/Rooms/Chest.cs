@@ -86,7 +86,7 @@ public class Chest
                 }
             }
 
-            Loot[i] = ItemPool[chosenIndex];
+            Loot[i] = ItemPool[chosenIndex].Clone();
         }
     }
 }

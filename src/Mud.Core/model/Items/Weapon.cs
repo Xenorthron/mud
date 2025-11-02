@@ -14,4 +14,5 @@ public class Weapon : Item
             player.Inventory.AddItem(currentWeapon);
         }
     }
+    public override Item Clone() => new Weapon(Name, Description, Value, AttackBonus);
 }

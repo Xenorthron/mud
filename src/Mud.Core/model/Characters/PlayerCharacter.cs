@@ -1,5 +1,6 @@
 public class PlayerCharacter : Character
 {
+    public List<Buff> ActiveBuffs { get; private set; } = new List<Buff>();
     public Inventory Inventory { get; private set; }
     public Weapon? Weapon { get; set; }
     public Armor? Armor { get; set; }
@@ -29,6 +30,20 @@ public class PlayerCharacter : Character
         else
         {
             target.Health -= 1; // Minimum damage
+        }
+    }
+    public void GameTick()
+    {
+        for (int i = ActiveBuffs.Count - 1; i >= 0; i--)
+        {
+            ActiveBuffs[i].Duration--;
+            if (ActiveBuffs[i].Duration <= 0)
+            {
+                // Remove buff effects
+                this.Attack -= ActiveBuffs[i].AttackBonus;
+                this.Defense -= ActiveBuffs[i].DefenseBonus;
+                ActiveBuffs.RemoveAt(i);
+            }
         }
     }
 }

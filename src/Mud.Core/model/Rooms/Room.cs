@@ -35,7 +35,7 @@ public class Room
                 }
                 else if (roll < 90)
                 {
-                    Tiles[y, x] = new Tile(ObjectType.CHARACTER, CharacterPool[Random.Shared.Next(CharacterPool.Length)]);
+                    Tiles[y, x] = new Tile(ObjectType.CHARACTER, CharacterPool[Random.Shared.Next(CharacterPool.Length)].Clone());
                 }
                 else if (roll < 96)
                 {
@@ -49,22 +49,23 @@ public class Room
         }
     }
 
-    private readonly Character[] CharacterPool = new Character[]
+    private readonly NonPlayerCharacter[] CharacterPool = new NonPlayerCharacter[]
     {
-        new NonPlayerCharacter("Goblin", "A sneaky goblin.", 30, 5, 2),
-        new NonPlayerCharacter("Orc", "A brutish orc.", 50, 10, 5),
-        new NonPlayerCharacter("Troll", "A large troll.", 80, 15, 8),
-        new NonPlayerCharacter("Skeleton", "A rattling skeleton.", 25, 7, 3),
-        new NonPlayerCharacter("Zombie", "A shambling zombie.", 40, 8, 4),
-        new NonPlayerCharacter("Bandit", "A cunning bandit.", 35, 12, 3),
-        new NonPlayerCharacter("Assassin", "A stealthy assassin.", 30, 14, 2),
-        new NonPlayerCharacter("Warlock", "A dark warlock.", 45, 18, 4),
-        new NonPlayerCharacter("Giant Spider", "A giant spider with venomous fangs.", 40, 10, 5),
-        new NonPlayerCharacter("Dark Knight", "A heavily armored dark knight.", 70, 20, 10),
-        new NonPlayerCharacter("Fire Elemental", "A blazing fire elemental.", 60, 25, 5),
-        new NonPlayerCharacter("Ice Golem", "A towering ice golem.", 80, 15, 15),
-        new NonPlayerCharacter("Vampire", "A bloodthirsty vampire.", 55, 18, 8),
-        new NonPlayerCharacter("Werewolf", "A ferocious werewolf.", 65, 22, 10),
-        new NonPlayerCharacter("Lich", "An ancient lich wielding dark magic.", 90, 30, 12)
+        new NonPlayerCharacter("Goblin", "A sneaky goblin", 30, 5, 2, false),
+        new NonPlayerCharacter("Orc", "A brutish orc", 50, 10, 5, false),
+        new NonPlayerCharacter("Troll", "A large troll", 80, 15, 8, false),
+        new NonPlayerCharacter("Ent", "A towering ent", 100, 12, 10, false),
+        new NonPlayerCharacter("Treant", "A massive tree-like creature", 120, 10, 12, false),
+        new NonPlayerCharacter("Slime", "A gooey slime monster", 20, 4, 1, false),
+        new NonPlayerCharacter("Skeleton", "A rattling skeleton", 25, 7, 3, true),
+        new NonPlayerCharacter("Zombie", "A shambling zombie", 40, 8, 4, true),
+        new NonPlayerCharacter("Bandit", "A cunning bandit", 35, 12, 3, false),
+        new NonPlayerCharacter("Assassin", "A stealthy assassin", 30, 14, 2, false),
+        new NonPlayerCharacter("Giant Spider", "A giant spider with venomous fangs", 40, 10, 5, true),
+        new NonPlayerCharacter("Vampire", "A bloodthirsty vampire", 55, 18, 8, true),
+        new NonPlayerCharacter("Werewolf", "A ferocious werewolf", 65, 22, 10, true),
+        new NonPlayerCharacter("Lich", "An ancient lich wielding dark magic", 90, 30, 12, true),
+        new NonPlayerCharacter("Banshee", "A wailing banshee that drains life", 50, 15, 5, true),
+        new NonPlayerCharacter("Mummy", "A cursed mummy wrapped in bandages", 60, 12, 6, true)
     };
 }

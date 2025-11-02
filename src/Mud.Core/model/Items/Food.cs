@@ -9,4 +9,5 @@ public class Food : Item
     {
         player.Health += HealthRestore;
     }
+    public override Item Clone() => new Food(Name, Description, Value, HealthRestore);
 }
