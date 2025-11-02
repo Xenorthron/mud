@@ -3,13 +3,8 @@ public class PlayerCharacter : Character
     public Inventory Inventory { get; private set; }
     public Weapon? Weapon { get; set; }
     public Armor? Armor { get; set; }
-    public PlayerCharacter(string name, string description)
+    public PlayerCharacter(string name, string description) : base(name, description, 100, 10, 0)
     {
-        Name = name;
-        Description = description;
-        Health = 100;
-        Attack = 10;
-        Defense = 0;
         Inventory = new Inventory();
         Weapon = null;
         Armor = null;
