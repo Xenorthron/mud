@@ -9,7 +9,7 @@ public class Trap
     }
     public bool AttemptDetect()
     {
-        if (Random.Shared.Next(0, 1) == 0) // 50% chance to detect
+        if (Random.Shared.Next(0, 2) == 0) // 50% chance to detect
         {
             IsDetected = true;
             return true;
@@ -18,7 +18,7 @@ public class Trap
     }
     public bool AttemptDisarm(PlayerCharacter player)
     {
-        if (Random.Shared.Next(0, 1) == 0) // 50% chance to disarm
+        if (Random.Shared.Next(0, 2) == 0) // 50% chance to disarm
         {
             IsArmed = false;
             return true;
