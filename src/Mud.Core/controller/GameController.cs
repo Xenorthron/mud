@@ -2,6 +2,9 @@ using System.Text.Json;
 
 public class GameController
 {
+    private const int MIN_GOLD_DROP = 5;
+    private const int MAX_GOLD_DROP = 50;
+
     public PlayerCharacter Player { get; private set; }
     public Map GameMap { get; private set; }
     public Room CurrentRoom { get; private set; }
@@ -194,7 +197,7 @@ public class GameController
             if (!npc.IsAlive())
             {
                 // NPC defeated, drop gold
-                int goldDrop = Random.Shared.Next(5, 50);
+                int goldDrop = Random.Shared.Next(MIN_GOLD_DROP, MAX_GOLD_DROP);
                 Player.Gold += goldDrop;
                 
                 // NPC defeated, remove from tile

@@ -205,12 +205,13 @@ public sealed class Test1
     [TestMethod]
     public void TestTrapDetection()
     {
+        const int MAX_DETECTION_ATTEMPTS = 100;
         var trap = new Trap(10);
         Assert.IsFalse(trap.IsDetected);
         
         // Try detection multiple times (50% chance)
         bool detected = false;
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < MAX_DETECTION_ATTEMPTS; i++)
         {
             var testTrap = new Trap(10);
             if (testTrap.AttemptDetect())
