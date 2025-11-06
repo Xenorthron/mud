@@ -18,6 +18,7 @@ public class GameMenu : Menu
             Console.WriteLine($"Time of Day: {(gameController.IsDay ? "Day" : "Night")}");
             Console.WriteLine($"Turn: {gameController.TurnCount}");
             Console.WriteLine($"Health: {gameController.Player.Health}/100");
+            Console.WriteLine($"Gold: {gameController.Player.Gold}");
             Console.WriteLine($"Attack: {gameController.Player.Attack} | Defense: {gameController.Player.Defense}");
             Console.WriteLine();
             
@@ -250,6 +251,7 @@ public class GameMenu : Menu
         var ratio = inventory.GetUsedSlotsRatio();
         Console.WriteLine($"Inventory: {ratio[0]}/{ratio[1]} slots used");
         Console.WriteLine($"Total Value: {inventory.GetValue()} gold");
+        Console.WriteLine($"Gold: {gameController.Player.Gold}");
         Console.WriteLine();
 
         for (int i = 0; i < inventory.Contents.Length; i++)

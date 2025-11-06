@@ -147,7 +147,34 @@ public class GameController
 
         PlayerX = newX;
         PlayerY = newY;
+
+        // Auto-detect adjacent traps (50% chance)
+        DetectAdjacentTraps();
+
         return true;
+    }
+
+    private void DetectAdjacentTraps()
+    {
+        for (int dy = -1; dy <= 1; dy++)
+        {
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                if (dx == 0 && dy == 0) continue;
+
+                int checkX = PlayerX + dx;
+                int checkY = PlayerY + dy;
+
+                if (IsValidPosition(checkX, checkY))
+                {
+                    var tile = CurrentRoom.Tiles[checkY, checkX];
+                    if (tile.Type == ObjectType.TRAP && tile.Object is Trap trap && !trap.IsDetected)
+                    {
+                        trap.AttemptDetect();
+                    }
+                }
+            }
+        }
     }
 
     public bool AttackNPC(int dx, int dy)
@@ -166,6 +193,10 @@ public class GameController
             Player.AttackTarget(npc);
             if (!npc.IsAlive())
             {
+                // NPC defeated, drop gold
+                int goldDrop = Random.Shared.Next(5, 50);
+                Player.Gold += goldDrop;
+                
                 // NPC defeated, remove from tile
                 targetTile.SetObject(ObjectType.EMPTY, null);
             }
