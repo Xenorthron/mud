@@ -4,6 +4,7 @@ public class PlayerCharacter : Character
     public Inventory Inventory { get; private set; }
     public Weapon? Weapon { get; set; }
     public Armor? Armor { get; set; }
+    public int Gold { get; set; } = 0;
     public PlayerCharacter(string name, string description) : base(name, description, 100, 10, 0)
     {
         Inventory = new Inventory();

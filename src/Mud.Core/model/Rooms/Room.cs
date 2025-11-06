@@ -15,7 +15,7 @@ public class Room
         Tiles = new Tile[height, width];
     }
 
-    private void PopulateTiles()
+    public void PopulateTiles()
     {
         // Initialize all tiles in the room
         // Use the following probabilities for different tile types:

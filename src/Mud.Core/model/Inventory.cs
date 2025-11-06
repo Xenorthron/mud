@@ -4,6 +4,8 @@ public class Inventory
     public Inventory()
     {
         Contents = new Bag[6];
+        // Add a starting bag with 6 slots
+        Contents[0] = new Bag("Starting Bag", "A simple bag", 6);
     }
     public int GetValue()
     {

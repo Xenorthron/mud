@@ -7,7 +7,7 @@ public class Food : Item
     }
     public override void Use(PlayerCharacter player)
     {
-        player.Health += HealthRestore;
+        player.Heal(HealthRestore);
     }
     public override Item Clone() => new Food(Name, Description, Value, HealthRestore);
 }
